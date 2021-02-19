@@ -1,16 +1,23 @@
 @startuml
 skinparam linetype ortho
-object utilisateur1
+map utilisateur1 {
+}
 
-object agence1
+map agence1 {
+  id => 1
+}
 
-object agence2
+map agence2 {
+  id => 2
+}
 
-object u1a1
-u1a1 : role = secretaire
+map u1a1 {
+  role => secretaire
+}
 
-object u1a2
-u1a2 : role = accueil
+map u1a2 {
+  role => accueil
+}
 
 utilisateur1 -- agence1
 utilisateur1 -- agence2
