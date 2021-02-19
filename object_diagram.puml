@@ -1,0 +1,19 @@
+@startuml
+object utilisateur1
+
+object agence1
+
+object agence2
+
+object u1a1
+u1a1 : role = secretaire
+
+object u1a2
+u1a2 : role = accueil
+
+utilisateur1 -- agence1
+utilisateur1 -- agence2
+
+(utilisateur1, agence1) -- u1a1
+(utilisateur1, agence2) -- u1a2
+@enduml
