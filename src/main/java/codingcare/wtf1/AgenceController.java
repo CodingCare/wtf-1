@@ -5,16 +5,12 @@ import java.util.List;
 
 public class AgenceController {
 
-    public Integer agenceUtilisateurs(Integer idAgence, String roleUtilisateur) {
-        Integer n = 0;
-        for (UtilisateurAgence ua : getListeUtilisateurAgence()) {
-            if (ua.getAgence().getId() == idAgence && ua.getRole() != null) {
-                if (ua.getRole().equals(roleUtilisateur)) {
-                    n++;
-                }
-            }
-        }
-        return n;
+    public Integer compterUtilisateurs(int idAgence, Role roleUtilisateur) {
+        return (int) getListeUtilisateurAgence()
+                .stream()
+                .filter(ua -> ua.sameAgence(idAgence))
+                .filter(ua -> ua.hasRole(roleUtilisateur))
+                .count();
     }
 
     private List<UtilisateurAgence> getListeUtilisateurAgence() {
@@ -23,8 +19,8 @@ public class AgenceController {
         Agence agence1 = new Agence(1);
         Agence agence2 = new Agence(2);
         Utilisateur utilisateur1 = new Utilisateur();
-        UtilisateurAgence ua1 = new UtilisateurAgence(utilisateur1, agence1, "secretaire");
-        UtilisateurAgence ua2 = new UtilisateurAgence(utilisateur1, agence2, "accueil");
+        UtilisateurAgence ua1 = new UtilisateurAgence(utilisateur1, agence1, Role.SECRETAIRE);
+        UtilisateurAgence ua2 = new UtilisateurAgence(utilisateur1, agence2, Role.ACCUEIL);
         return Arrays.asList(ua1, ua2);
     }
 }

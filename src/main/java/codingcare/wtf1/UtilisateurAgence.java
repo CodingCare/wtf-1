@@ -1,12 +1,14 @@
 package codingcare.wtf1;
 
+import java.util.Optional;
+
 public class UtilisateurAgence {
 
     private final Utilisateur utilisateur;
     private final Agence agence;
-    private final String role;
+    private final Role role;
 
-    public UtilisateurAgence(Utilisateur utilisateur, Agence agence, String role) {
+    public UtilisateurAgence(Utilisateur utilisateur, Agence agence, Role role) {
         this.utilisateur = utilisateur;
         this.agence = agence;
         this.role = role;
@@ -20,7 +22,15 @@ public class UtilisateurAgence {
         return agence;
     }
 
-    public String getRole() {
-        return role;
+    public Optional<Role> getRole() {
+        return Optional.ofNullable(role);
+    }
+
+    public boolean sameAgence(int idAgence) {
+        return this.agence.getId() == idAgence;
+    }
+
+    public boolean hasRole(Role role) {
+        return this.role != null && this.role == role;
     }
 }

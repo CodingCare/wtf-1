@@ -7,7 +7,7 @@ class AgenceControllerTest {
     @Test
     void should_count() {
         AgenceController ctrl = new AgenceController();
-        int count = ctrl.agenceUtilisateurs(1, "secretaire");
+        int count = ctrl.compterUtilisateurs(1, Role.SECRETAIRE);
         Assertions.assertEquals(1, count);
     }
 }
