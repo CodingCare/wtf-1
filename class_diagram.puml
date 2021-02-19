@@ -4,12 +4,21 @@ class Utilisateur {
 
 }
 class Agence {
-  -agenceId: Integer
+  -agenceId: int
 }
 Utilisateur "*" -- "*" Agence
 
+enum Role {
+  {static} +Secretaire
+  {static} +Accueil
+}
+
 class UtilisateurAgence {
-- role: String
+- role: Role
++ getRole(): Optional<Role>
++ hasRole(role: Role): boolean
++ isSameAgence(agenceId: int): boolean
 }
 (Utilisateur,Agence) -- UtilisateurAgence
+UtilisateurAgence --> Role
 @enduml
