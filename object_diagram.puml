@@ -11,12 +11,18 @@ map agence2 {
   id => 2
 }
 
+map Secretaire {
+}
+
+map Accueil {
+}
+
 map u1a1 {
-  role => secretaire
+  role *-> Secretaire
 }
 
 map u1a2 {
-  role => accueil
+  role *-> Accueil
 }
 
 utilisateur1 -- agence1
